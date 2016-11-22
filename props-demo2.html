@@ -22,30 +22,21 @@
 <script type="text/babel">
     //在此处编写React代码
 
-    /*props是组件自身的属性, 一般用于嵌套的内外层组件中, 负责传递信息(通常是由父层组件向子层组件传递)
-    注意: props对象中的属性与组件的属性一一对应, 不要去修改props中属性的值*/
+    /*
+        ...this.props
+        props提供的语法糖, 可以将父组件中的全部属性都复制给子组件
 
-    var WebName = React.createClass({
-        render: function () {
-            return <h1>{this.props.webName}</h1>
-        }
-    });
+        需求: 定义一个组件Link, Link组件中只包含一个<a>, 我们不给<a>设置任何属性, 所有属性全部从父组件复制得到
+    */
 
-    var WebLink = React.createClass({
+    var Link = React.createClass({
         render: function () {
-            return <a href={this.props.webLink}>{this.props.webLink}</a>
-        }
-    });
-
-    //这里要加div,或者其他包裹标签,不加会报错
-    var WebShow = React.createClass({
-        render: function () {
-            return (
-                    <div>
-                        <WebName webName={this.props.wName}/>
-                        <WebLink webLink={this.props.wLink}/>
-                    </div>
-            );
+            /*
+                使用...this.props方式复制所有父控件的属性,最后生成出来的代码如下:
+                <a href="https://www.baidu.com" name="百度科技">zzz</a>
+                <a>括号中不会显示zzz因为a标签没有这个属性,只能显示a标签有的属性,中间的值可以自定义任何名字
+            */
+            return <a {...this.props}>{this.props.zzz}</a>
         }
     });
 
@@ -60,7 +51,7 @@
      */
 
     ReactDOM.render(
-            <WebShow wName="百度科技" wLink="https:www.baidu.com"/>,
+            <Link href="https://www.baidu.com" zzz="zzz" name="百度科技"/>,
             document.getElementById("container")
     );
 </script>
