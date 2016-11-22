@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>React第一个例子</title>
+    <script type="text/javascript" src="react.min.js"></script>
+    <script type="text/javascript" src="react-dom.min.js"></script>
+    <script type="text/javascript" src="browser.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+    /**
+     * 创建一个组件类, 用于输出Hello React
+     *
+     * 1.React中创建的组件类似以大写字母开头、驼峰命名法.
+     * 2.在React中使用React.createClass方法创建一个组件类
+     * 3.核心代码: 每个组件类都必须实现自己的render方法, 输出定义好的组件模板, 返回值:null、false、组件模板
+     * 4.注意: 组件类只能包含一个顶层标签
+     */
+
+    var HelloMessage = React.createClass({
+        render : function () {
+            return (
+                <h1>Hello React</h1>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        //在模板中插入自定义的组件类HelloMessage
+        <HelloMessage/>,
+        document.getElementById("container")
+    );
+    /*var HelloMessage=React.createClass(
+            {
+                render:function(){
+                    return <h1 style={{color:'#ff0000',fontSize:'24px'}} >Hello {this.props.name}!我是郑炯</h1>;
+                    //这是注释  React.createElement
+                }
+            }
+    );
+
+    ReactDOM.render(<HelloMessage name="Hello React" /> ,document.getElementById('container'));*/
+
+
+
+
+</script>
+</body>
+</html>

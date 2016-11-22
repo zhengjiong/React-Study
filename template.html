@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模板</title>
+
+    <!-- react.min.js是React的核心库-->
+    <script type="text/javascript" src="react.min.js"></script>
+
+    <!-- react-dom.min.js的作用是提供与DOM相关的功能-->
+    <script type="text/javascript" src="react-dom.min.js"></script>
+
+    <!-- browser.min.js的作用是将JSX的语法转换层JavaScript语法-->
+    <script type="text/javascript" src="browser.min.js"></script>
+
+</head>
+<body>
+<!-- React渲染的模板内容会插入到这个DOM节点中, 作为一个容器-->
+<div id="container"></div>
+<!-- 在React开发中, 使用JSX跟JavaScript不兼容, 在使用JSX的地方, 要设置type="text/babel"-->
+<!--- babel是一个转换编译器, ES6转成可以在浏览器中运行的代码-->
+<script type="text/babel">
+    //在此处编写React代码
+
+    /*
+        ReactDOM.render()
+        React的最基本方法, 用于将模板转换层HTML语言, 渲染DOM, 并插入制定的DOM节点中
+
+        3个参数
+        第1个: 模板的渲染内容(HTML形式)
+        第2个: 这段模板需要插入的DOM节点(本程序中, 是id为container的div节点)
+        第3个: 渲染后的回调, 一般不用
+     */
+    ReactDOM.render(
+        <h1>Hello React</h1>,
+        document.getElementById("container")
+    );
+</script>
+</body>
+</html>

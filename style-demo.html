@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>React第一个例子</title>
+    <script type="text/javascript" src="react.min.js"></script>
+    <script type="text/javascript" src="react-dom.min.js"></script>
+    <script type="text/javascript" src="browser.min.js"></script>
+
+    <style>
+        .pStyle{
+            background-color: blue;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script type="text/babel">
+    /**
+     * 设置组件样式:
+     * 1.内联样式
+     * 2.对象样式
+     * 3.选择器样式
+     *
+     * 注意: 在React和HTML5中设置样式是有书写区别的
+     * 1.html5以;结尾
+     *   React以,结尾
+     *
+     * 2.HTLML5中key、value都不加引号
+     *   React中属于JavaScript对象,key的名字不能出现"-", 需要使用驼峰命名法,如果value为字符串,需要加引号
+     *
+     * 3.HTML5中,value如果是数字, 需要带单位
+     *   React中不需要带单位
+     */
+
+    //对象样式
+    var h1Style = {
+        color : "#cff98c",
+        backgroundColor: "#31f6fe"
+    }
+
+    var ShowMessage = React.createClass({
+        render: function () {
+            return (
+                    /**
+                     * div使用内联样式
+                     * h1使用对象样式
+                     * p使用选择器样式
+                     */
+                    <div style={{backgroundColor: "#fb3145", borderWidth: 5, borderColor: "BLACK", borderStyle: "solid"}}>
+
+                        <h1 style={h1Style}>{this.props.firstRow}</h1>
+
+                        <p className="pStyle">{this.props.secondRow}</p>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <ShowMessage firstRow="zheng" secondRow="jiong"/>,
+            document.getElementById("container")
+    );
+</script>
+</body>
+</html>
