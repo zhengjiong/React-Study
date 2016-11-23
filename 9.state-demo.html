@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模板</title>
+
+    <!-- react.min.js是React的核心库-->
+    <script type="text/javascript" src="react.min.js"></script>
+
+    <!-- react-dom.min.js的作用是提供与DOM相关的功能-->
+    <script type="text/javascript" src="react-dom.min.js"></script>
+
+    <!-- browser.min.js的作用是将JSX的语法转换层JavaScript语法-->
+    <script type="text/javascript" src="browser.min.js"></script>
+
+</head>
+<body>
+<!-- React渲染的模板内容会插入到这个DOM节点中, 作为一个容器-->
+<div id="container"></div>
+
+<!-- 在React开发中, 使用JSX跟JavaScript不兼容, 在使用JSX的地方, 要设置type="text/babel"-->
+<!--- babel是一个转换编译器, ES6转成可以在浏览器中运行的代码-->
+<script type="text/babel">
+    //在此处编写React代码
+
+    var CheckButton = React.createClass({
+        //定义state初始状态,方法必须是getInitialState
+        getInitialState : function () {
+            return {
+                //在这个对象中设置的属性,将会存储在state中
+                //默认状态:未选中
+                isChecked: false
+            };
+        },
+        handleCheck : function () {
+            this.setState({
+                //修改状态的值
+                //当state变化时,会条用对象的render方法, 就会重新刷新UI一次
+                isChecked : !this.state.isChecked
+            })
+            //this.props.title = this.state.isChecked ? "已选中" : "未选中";
+        },
+        render: function () {
+            //根据isChecked的值设置位置
+            //在jsx中不能使用if,必须使用三目, 但是可以在外部定义一个function(可以用if),然后这个方法返回结果
+            let text = this.state.isChecked ? "已选中" : "未选中";
+            return (
+                    <span>
+                        <input type="checkbox" onClick={this.handleCheck}></input>
+                        {text}
+                    </span>
+            );
+        }
+    });
+
+    /*
+     ReactDOM.render()
+     React的最基本方法, 用于将模板转换层HTML语言, 渲染DOM, 并插入制定的DOM节点中
+
+     3个参数
+     第1个: 模板的渲染内容(HTML形式)
+     第2个: 这段模板需要插入的DOM节点(本程序中, 是id为container的div节点)
+     第3个: 渲染后的回调, 一般不用
+     */
+    ReactDOM.render(
+            <CheckButton/>,
+            document.getElementById("container")
+    );
+</script>
+</body>
+</html>
