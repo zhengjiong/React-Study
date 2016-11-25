@@ -29,9 +29,16 @@
            return (
                 <ul>
                     {
-                        React.Children.map(this.props.children, function (child) {
+                        //用es6方式
+                        React.Children.map(this.props.children, child => {
                             return <li>{child}</li>
                         })
+                        //不用es6
+                        //第一个参数为要遍历的对象,
+                        //第二个参数为一个方法, 用于处理遍历得到的对象
+                        /*React.Children.map(this.props.children, function (child) {
+                            return <li>{child}</li>
+                        })*/
                     }
                 </ul>
            );

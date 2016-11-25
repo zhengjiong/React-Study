@@ -33,9 +33,11 @@
             };
         },
         handleCheck : function () {
+            //这里要加this
             this.setState({
                 //修改状态的值
                 //当state变化时,会条用对象的render方法, 就会重新刷新UI一次
+                //前面的isChecked不能加this,后面的必须加this.state
                 isChecked : !this.state.isChecked
             })
             //this.props.title = this.state.isChecked ? "已选中" : "未选中";
