@@ -1,0 +1,15 @@
+React初步试错
+
+1、React的return中如果使用多个标签必须放在一个div中，否则浏览器无法解析
+
+记得加{},经常忘
+
+2、ReactComponentWithPureRenderMixin报错，原因是antd没装好
+
+3、JS报错 Uncaught TypeError: Cannot read property 'extend' of undefined
+原因：在business.html中引用css未生效，在main.css中引用生效，so strange
+
+4、"Uncaught Error: Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings."
+原因：render()中的注释导致，删除注释即可
+
+5、state树更新失败:乱用antd中的分页，导致数据显示错误
